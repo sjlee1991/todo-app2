@@ -3,14 +3,17 @@ os: linux
 
 files:
   - source: /
-    destination: /home/ubuntu/deploy-fe/
+    destination: /home/ubuntu/deployfe/
     overwrite: yes
 permissions:
-  - object: /home/ubuntu/deploy-fe/
+  - object: /home/ubuntu/deployfe/
     owner: ubuntu
     group: ubuntu
     mode: 755
 hooks:
+  BeforeInstall:
+    timeout: 60
+    runas: ubuntu
   AfterInstall:
     - location: deploy.sh
     timeout: 60
